@@ -1,8 +1,13 @@
 package mobile_banking.views;
+@SuppressWarnings("unused")
 
 public class MainMenu {
 
     User currentUser;
+
+    public mainMenu{
+
+    }
 
     /*
 
