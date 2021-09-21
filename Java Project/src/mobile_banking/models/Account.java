@@ -1,4 +1,7 @@
 package mobile_banking.models;
+
+import java.util.ArrayList;
+
 @SuppressWarnings("unused")
 
 public class Account {
@@ -6,11 +9,11 @@ public class Account {
     private String accountName;
     private double balance;
     private String accountType;
-    private List<Transaction> transactions;
+    private ArrayList<Transaction> transactions;
     private int sortCode;
     private int accountNumber;
 
-    public Account(String accountName, double balance, String accountType, List<Transaction> transactions, int sortCode, int accountNumber){
+    public Account(String accountName, double balance, String accountType, ArrayList<Transaction> transactions, int sortCode, int accountNumber){
         this.accountName = accountName;
         this.balance = balance;
         this.accountType = accountType;
