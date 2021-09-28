@@ -5,6 +5,7 @@ import mobile_banking.views.*;
 import java.time.LocalDate;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 @SuppressWarnings("unused")
 
@@ -72,12 +73,20 @@ public class AccountActions {
                     System.out.println("Transfer failed, please try again");
                 }
                 break;
-            case 4: //Rename Account
+            case 4:
+                // rename account
+                renameAccount(selectedAccount);
                 break;
 
             case 5: //Close Account
                 break;
         }
+    }
+
+    private static void renameAccount(Account selectedAccount) {
+        System.out.println("Please choose a new name for your account:");
+        String newName = (new Scanner(System.in).nextLine());
+        selectedAccount.setAccountName(newName);
     }
 
     private static void viewTransactions(Account selectedAccount) {
@@ -124,4 +133,5 @@ public class AccountActions {
             return false;
         }
     }
+
 }
