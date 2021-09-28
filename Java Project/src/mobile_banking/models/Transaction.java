@@ -1,26 +1,24 @@
 package mobile_banking.models;
-import java.util.*;
+
+import java.time.LocalDate;
+
 @SuppressWarnings("unused")
 
 public class Transaction {
 
-    private double amount;
-    private Date transactionDate;
+    private LocalDate transactionDate;
     private String transactionParty;
+    private double transactionAmount;
     private double newBalance;
 
-    public Transaction(double amount, Date transactionDate, String transactionParty, double newBalance){
-        this.amount = amount;
+    public Transaction(LocalDate transactionDate, String transactionParty, double transactionAmount, double newBalance){
         this.transactionDate = transactionDate;
         this.transactionParty = transactionParty;
+        this.transactionAmount = transactionAmount;
         this.newBalance = newBalance;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public Date getTransactionDate() {
+    public LocalDate getTransactionDate() {
         return transactionDate;
     }
 
@@ -28,11 +26,12 @@ public class Transaction {
         return transactionParty;
     }
 
-    public double getNewBalance() {
-        return newBalance;
+    public double getTransactionAmount() {
+        return transactionAmount;
     }
 
-    public void setNewBalance(double newBalance) {
-        this.newBalance = newBalance;
+    @Override
+    public String toString() {
+        return transactionDate + " - " + transactionParty + " - " + transactionAmount + " - " + newBalance;
     }
 }

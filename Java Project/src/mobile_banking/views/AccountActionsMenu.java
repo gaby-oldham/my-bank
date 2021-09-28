@@ -1,40 +1,59 @@
 package mobile_banking.views;
-import java.util.Scanner;
+import java.util.*;
+
 @SuppressWarnings("unused")
 
 public class AccountActionsMenu {
 /* creates account action menu view class
-   this class will allow the user to choose an account */
+   this class will allow the user to choose an action */
 
-    Scanner scn = new Scanner(System.in);
-    // creates a new instance of the scanner class
-
-    public static int displayAccounts(String[] accounts){
-    /* creates new method
-       this method will allow the user to choose an account */
-        System.out.println("Please select one of your accounts from the list below:");
-        // prompt - outputted to the user
-        for(int i = 1; i < accounts.length + 1; i++){
-        // this loop will run until it has outputted every item of the accounts list
-            System.out.println(i + " - " + accounts[i - 1]);
-            // outputs the item of the accounts list with the index corresponding to the value of i
-        }
+    public static int menu(){
+    /* creates method menu
+       this method will be used to output a selection of actions to the user */
+        System.out.println("Please choose an option");
+        System.out.println("1. View balance");
+        System.out.println("2. View transactions");
+        System.out.println("3. Make transfer");
+        System.out.println("4. Rename account");
+        System.out.println("5. Close account");
+        // outputs the menu options to the user
         return Integer.parseInt(new Scanner(System.in).nextLine());
-        // the return value of this method will be the corresponding value to the account selected by the user
+        // sets choice variable to the user's choice
     }
 
-    /*
+    // View balance
+    public static void viewBalance(double balance){
+    /* creates method view balance
+       this method will be used to output the user's chosen account's balance */
+        System.out.println("Your account's balance is " + balance);
+        // outputs the user's chosen account's balance
+    }
 
-    User is asked if they want to view their account balence
-    if so they are shown their balence
+    // View transactions
 
-    if not they're asked if they want to transfer funds
-    if so they are able to transfer funds
+    // Make transfer
+    public static byte getDestinationAccount(ArrayList<String> accNames){
+        System.out.println("Please select the destination account");
+        for(String s : accNames){
+            System.out.println(accNames.indexOf(s) + 1 + " - " + s);
+        }
+        return (byte) (Byte.parseByte(new Scanner(System.in).nextLine()) - 1);
+    }
 
-    if not they're asked if they are done and want to log out
-    if so program ends
-    if not theyre redirected to account actions menu
+    public static double getTransferAmount(){
+        System.out.println("How much would you like to transfer?");
+        return Double.parseDouble(new Scanner(System.in).nextLine());
+    }
 
-     */
+    public static void displayTransactions(ArrayList<String> transactions){
+        System.out.println("Please see all transactions listed below");
+        for(String s : transactions){
+            System.out.println(s);
+        }
+    }
+
+    // Close account
+
+    // Change account name
 
 }

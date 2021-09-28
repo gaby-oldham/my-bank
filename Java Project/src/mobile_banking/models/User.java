@@ -1,24 +1,29 @@
 package mobile_banking.models;
+import java.util.*;
 @SuppressWarnings("unused")
 
 public class User {
 
-    private String fullName;
-    private int userID;
     private String username;
     private String password;
+    private String forename;
+    private String surname;
     private ArrayList<Account> accounts;
 
-    public User(String fullName, int userID, String username, String password, ArrayList<Account> accounts){
-        this.fullName = fullName;
-        this.userID = userID;
+    public User(String username, String password, String forename, String surname){
         this.username = username;
         this.password = password;
-        this.accounts = accounts;
+        this.forename = forename;
+        this.surname = surname;
+        this.accounts = new ArrayList<>();
     }
 
-    public String getFullName(){
-        return fullName;
+    public User(String username, String password, String forename, String surname, ArrayList<Account> accounts){
+        this.username = username;
+        this.password = password;
+        this.forename = forename;
+        this.surname = surname;
+        this.accounts = accounts;
     }
 
     public String getUsername(){
@@ -29,20 +34,20 @@ public class User {
         return password;
     }
 
+    public String getForename(){
+        return forename;
+    }
+
+    public String getSurname(){
+        return surname;
+    }
+
     public ArrayList<Account> getAccounts(){
         return accounts;
     }
 
-    public void setPassword(String password){
-        this.password = password;
-    }
-
     public void addAccount(Account account){
-        accounts.add(account);
-    }
-
-    public void setAccounts(String accounts){
-        this.accounts = accounts;
+        this.accounts.add(account);
     }
 
 }

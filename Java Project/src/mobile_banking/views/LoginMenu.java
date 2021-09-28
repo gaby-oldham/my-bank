@@ -1,8 +1,9 @@
 package mobile_banking.views;
-@SuppressWarnings("unused")
-
-import java.util.Scanner;
+import mobile_banking.models.*;
+import mobile_banking.controllers.*;
+import java.util.*;
 // imports the appropriate data from the java library so that the Scanner class can be used to get user input
+@SuppressWarnings("unused")
 
 public class LoginMenu {
     /* creates login menu view class
@@ -16,13 +17,13 @@ public class LoginMenu {
            the purpose of the main method is to act as the program's execution start point */
         LoginMenu login = new LoginMenu();
         // creates a new instance of the login menu class
-        while(true) {
+        while (true) {
             login.getUserDetails();
             // while the return value of this class is true execute the getUserDetails method
         }
     }
 
-    public void getUserDetails(){
+    public void getUserDetails() {
         /* creates method
            this method will be used to prompt the user to enter their login details */
         System.out.println("Please enter your username.");
@@ -35,17 +36,15 @@ public class LoginMenu {
         // saves the password inputted by the user to a variable
         Login loginController = new Login();
         // creates a new instance of the login class, connecting the two classes
-        if(loginController.validateLogin(username, password)){
-        /* if the username and password entered by the user are valid do then the program flows to the next step
-           if they don't the program skips to after the else statement */
-            System.out.println("Welcome back " + username);
-            // marks successful login
-        }
-        else{
+        User u = loginController.validateLogin(username, password);
+        if(u != null){
+            new MainMenu(u);
+        } else {
             System.out.println("Invalid details, please try again");
             // marks unsuccessful login
         }
     }
+}
 
     /*
 
@@ -61,5 +60,3 @@ public class LoginMenu {
 
 
      */
-
-}

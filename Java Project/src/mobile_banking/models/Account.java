@@ -1,46 +1,47 @@
 package mobile_banking.models;
-
-import java.util.ArrayList;
+import java.util.*;
 
 @SuppressWarnings("unused")
 
 public class Account {
 
     private String accountName;
-    private double balance;
+    private double accountBalance;
     private String accountType;
-    private int sortCode;
-    private int accountNumber;
+    private ArrayList<Transaction> transactions;
 
-    public Account(String accountName, double balance, String accountType, int accountNumber){
+    public Account(String accountName, double accountBalance, String accountType) {
         this.accountName = accountName;
-        this.balance = balance;
+        this.accountBalance = accountBalance;
         this.accountType = accountType;
-        this.accountNumber = accountNumber;
+        this.transactions = new ArrayList<>();
     }
 
     public String getAccountName() {
         return accountName;
     }
 
-    public double getBalance() {
-        return balance;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public double getAccountBalance() {
+        return accountBalance;
+    }
+
+    public void setAccountBalance(double accountBalance) {
+        this.accountBalance = accountBalance;
     }
 
     public String getAccountType() {
         return accountType;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void addTransaction(Transaction transaction) {
+        this.transactions.add(transaction);
     }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
 }
