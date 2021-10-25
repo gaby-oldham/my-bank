@@ -14,6 +14,37 @@ public class Customer {
         this.accounts = new ArrayList<Account>();
     }
 
+    // Make transfer
+    public static transfer(ArrayList<String> accNames){
+
+        //determine account to transfer money from
+        System.out.println("Please choose the account you wish to transfer from");
+        for(String s : accNames){
+            System.out.println(accNames.indexOf(s) + 1 + " - " + s);
+        }
+        string accountOne = accNames[Byte.parseByte(new Scanner(System.in).nextLine()) - 1)];
+
+        //determine account to transfer money to
+        System.out.println("Please choose the account you wish to transfer to");
+        for(String s : accNames){
+            System.out.println(accNames.indexOf(s) + 1 + " - " + s);
+        }
+        string accountTwo = accNames[Byte.parseByte(new Scanner(System.in).nextLine()) - 1)];
+
+        //error handling
+        if (accountOne == accountTwo){
+            System.out.println("Same account selected");
+            transfer(accNames)
+        }
+        //determine how much money needs transferring
+        System.out.println("How much would you like to transfer?");
+        double amount = Double.parseDouble(new Scanner(System.in).nextLine());
+
+        //transfer money
+        accountOne.withdraw(amount);
+        accountTwo.deposit(amount);
+    }
+
     public String getName() {
         return name;
     }

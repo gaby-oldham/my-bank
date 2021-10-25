@@ -3,6 +3,10 @@ package com.abc;
 import java.util.ArrayList;
 import java.util.List;
 
+//for checking whether there have been withdrawals in the past 10 days
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 public class Account {
 
     public static final int CHECKING = 0;
@@ -25,33 +29,49 @@ public class Account {
         }
     }
 
-public void withdraw(double amount) {
-    if (amount <= 0) {
-        throw new IllegalArgumentException("amount must be greater than zero");
-    } else {
-        transactions.add(new Transaction(-amount));
+    public void withdraw(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("amount must be greater than zero");
+        } else {
+            transactions.add(new Transaction(-amount));
+        }
     }
-}
+
+    //used to calculate the daily compounding interest
+    public double getDailyCompoundingInterest(amount) {
+        return (((amount / 365) + 1) ^ 365) - 1;
+    }
 
     public double interestEarned() {
         double amount = sumTransactions();
-        switch(accountType){
+        double interest = 0;
+                switch(accountType){
             case SAVINGS:
-                if (amount <= 1000)
-                    return amount * 0.001;
-                else
-                    return 1 + (amount-1000) * 0.002;
+                if (amount <= 1000) {
+                    interest = getDailyCompoundingInterest(0.001) * amount;
+                    return amount + interest;
+                }
+                else {
+                    interest = getDailyCompoundingInterest(0.002) * (1 + (amount - 1000));
+                    return amount + interest;
+                }
 //            case SUPER_SAVINGS:
 //                if (amount <= 4000)
 //                    return 20;
             case MAXI_SAVINGS:
                 if (amount <= 1000)
-                    return amount * 0.02;
-                if (amount <= 2000)
-                    return 20 + (amount-1000) * 0.05;
-                return 70 + (amount-2000) * 0.1;
+                    interest = getDailyCompoundingInterest(0.02) * amount;
+                    return amount + interest;
+                //identifies whether the last transaction was made in the last 10 days
+                if ((amount <= 2000) and (transactions.get(transactions.size() - 1).before(LocalDate.now().minusDays(10)))) {
+                    interest = getDailyCompoundingInterest(0.05) * (20 + (amount - 1000));
+                    return amount + interest;
+                }
+                interest = getDailyCompoundingInterest(0.1) * (70 + (amount-2000));
+                return amount + interest;
             default:
-                return amount * 0.001;
+                interest = getDailyCompoundingInterest(0.001) * amount;
+                return amount + interest;
         }
     }
 
