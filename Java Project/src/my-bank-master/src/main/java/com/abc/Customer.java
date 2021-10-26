@@ -45,6 +45,7 @@ public class Customer {
         accountTwo.deposit(amount);
     }
 
+
     public String getName() {
         return name;
     }

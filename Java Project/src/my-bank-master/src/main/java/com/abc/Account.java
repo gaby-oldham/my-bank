@@ -79,6 +79,7 @@ public class Account {
         }
     }
 
+
     public double sumTransactions() {
        return checkIfTransactionsExist(true);
     }
