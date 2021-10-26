@@ -16,6 +16,10 @@ public class Account {
     private final int accountType;
     public List<Transaction> transactions;
 
+    public static void main(String[] args) {
+
+    }
+
     public Account(int accountType) {
         this.accountType = accountType;
         this.transactions = new ArrayList<Transaction>();
@@ -38,7 +42,7 @@ public class Account {
     }
 
     //used to calculate the daily compounding interest
-    public double getDailyCompoundingInterest(amount) {
+    public double getDailyCompoundingInterest(int amount) {
         return (((amount / 365) + 1) ^ 365) - 1;
     }
 
@@ -63,7 +67,7 @@ public class Account {
                     interest = getDailyCompoundingInterest(0.02) * amount;
                     return amount + interest;
                 //identifies whether the last transaction was made in the last 10 days
-                if ((amount <= 2000) and (transactions.get(transactions.size() - 1).before(LocalDate.now().minusDays(10)))) {
+                if (amount <= 2000) and (transactions.get(transactions.size() - 1).before(LocalDate.now().minusDays(10)));{
                     interest = getDailyCompoundingInterest(0.05) * (20 + (amount - 1000));
                     return amount + interest;
                 }
