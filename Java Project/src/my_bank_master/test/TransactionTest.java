@@ -1,11 +1,11 @@
-package com.abc;
-
+package my_bank_master.test;
+import my_bank_master.main.*;
+import my_bank_master.ui.*;
+import static org.junit.Assert.*;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
+@SuppressWarnings("unused")
 
 public class TransactionTest {
-    @Test
     public void transaction() {
         Transaction t = new Transaction(5);
         assertTrue(t instanceof Transaction);

@@ -1,13 +1,13 @@
-package com.abc;
-
+package my_bank_master.test;
+import my_bank_master.main.*;
+import my_bank_master.ui.*;
+import static org.junit.Assert.*;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+@SuppressWarnings("unused")
 
 public class BankTest {
     private static final double DOUBLE_DELTA = 1e-15;
 
-    @Test
     public void customerSummary() {
         Bank bank = new Bank();
         Customer john = new Customer("John");
@@ -17,7 +17,6 @@ public class BankTest {
         assertEquals("Customer Summary\n - John (1 account)", bank.customerSummary());
     }
 
-    @Test
     public void checkingAccount() {
         Bank bank = new Bank();
         Account checkingAccount = new Account(Account.CHECKING);
@@ -29,7 +28,6 @@ public class BankTest {
         assertEquals(0.1, bank.totalInterestPaid(), DOUBLE_DELTA);
     }
 
-    @Test
     public void savings_account() {
         Bank bank = new Bank();
         Account checkingAccount = new Account(Account.SAVINGS);
@@ -40,7 +38,6 @@ public class BankTest {
         assertEquals(2.0, bank.totalInterestPaid(), DOUBLE_DELTA);
     }
 
-    @Test
     public void maxi_savings_account() {
         Bank bank = new Bank();
         Account checkingAccount = new Account(Account.MAXI_SAVINGS);

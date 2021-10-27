@@ -1,7 +1,9 @@
-package com.abc;
-
+package my_bank_master.main;
+import my_bank_master.test.*;
+import my_bank_master.ui.*;
 import java.util.ArrayList;
 import java.util.List;
+@SuppressWarnings("unused")
 
 public class Bank {
     private List<Customer> customers;
